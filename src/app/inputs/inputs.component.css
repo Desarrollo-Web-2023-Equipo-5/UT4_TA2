@@ -1,0 +1,96 @@
+button {
+  background-color: rgb(208, 212, 212);
+  width: 10em;
+  height: 5em;
+  transition: transform 0.2s;
+  border-radius: 1em;
+}
+
+button:hover {
+  cursor: pointer;
+  transform: scale(1.2);
+}
+
+input:checked + .slider {
+  background-color: #2196f3;
+}
+input:checked + .slider:before {
+  transform: translateX(26px);
+}
+
+.input-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1em;
+  height: 10em;
+}
+
+input {
+  width: 25%;
+  border: 0.1em solid #2196f3;
+}
+
+input:focus,
+input:hover {
+  border: 0.2em solid #2196f3;
+  outline: none;
+}
+
+.btn-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1em;
+}
+
+#btn-ul {
+  background-color: green;
+  color: white;
+  border: none;
+}
+
+#loadU {
+  color: white;
+  background: linear-gradient(
+    45deg,
+    red,
+    orange,
+    yellow,
+    green,
+    blue,
+    indigo,
+    violet,
+    red
+  );
+  border: none;
+}
+
+#loadU:hover {
+  background: linear-gradient(
+    130deg,
+    red,
+    orange,
+    yellow,
+    green,
+    blue,
+    indigo,
+    violet,
+    red
+  );
+}
+
+#btn-ul:hover {
+  background-color: rgb(0, 118, 0);
+}
+
+#btn-cat {
+  background-color: steelblue;
+  color: white;
+  border: none;
+}
+
+#btn-cat:hover {
+  background-color: rgb(45, 85, 118);
+}
