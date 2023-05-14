@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { CardComponent} from "../card/card.component";
+import { Task } from '../interface/task';
 
 
 @Injectable({
@@ -10,7 +11,7 @@ export class ApiService {
   url = "http://localhost:3000/tasks";
   catTipsUrl = "https://catfact.ninja/fact";
 
-  async getAllTasks(): Promise<CardComponent[]> {
+  async getAllTasks(): Promise<Task[]> {
     const data = await fetch(this.url);
     return await data.json() ?? [];
   }
@@ -20,7 +21,7 @@ export class ApiService {
     return await data.json() ?? {};
   }
 
-  async createTask(data:CardComponent): Promise<void> {
+  async createTask(data:Task): Promise<void> {
     await fetch(this.url, {
       method: 'POST',
       headers: {
@@ -39,9 +40,10 @@ export class ApiService {
     })
   }
 
-  async getCatTip(): Promise<any> {
+  async getCatTip(): Promise<string> {
     const data = await fetch(this.catTipsUrl);
-    return await data.json() ?? {};
+    const fact = await data.json();
+    return await fact.fact ?? {};
   }
 
 
