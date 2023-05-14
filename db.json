@@ -5,6 +5,42 @@
       "title": "json-server",
       "description": "typicode",
       "done": false
+    },
+    {
+      "title": "Random Cat Fact",
+      "description": "A cat's hearing is much more sensitive than humans and dogs.",
+      "done": false,
+      "id": 2
+    },
+    {
+      "title": "Random Cat Fact",
+      "description": "It may take as long as 2 weeks for a kitten to be able to hear well.  Their eyes usually open between 7 and 10 days, but sometimes it happens in as little as 2 days.",
+      "done": false,
+      "id": 3
+    },
+    {
+      "title": "Random Cat Fact",
+      "description": "Some cats have survived falls of over 65 feet (20 meters), due largely to their “righting reflex.” The eyes and balance organs in the inner ear tell it where it is in space so the cat can land on its feet. Even cats without a tail have this ability.",
+      "done": false,
+      "id": 4
+    },
+    {
+      "title": "Random Cat Fact",
+      "description": "Fossil records from two million years ago show evidence of jaguars.",
+      "done": false,
+      "id": 5
+    },
+    {
+      "title": "Random Cat Fact",
+      "description": "All cats have claws, and all except the cheetah sheath them when at rest.",
+      "done": false,
+      "id": 6
+    },
+    {
+      "title": "sdsad",
+      "description": "sfsaf",
+      "done": false,
+      "id": 7
     }
   ]
 }

@@ -1,1 +1,6 @@
-<p>card-list works!</p>
+
+    <ul *ngFor="let task of tasks">
+        <li>
+            <app-card [task]="task"></app-card>
+        </li>
+    </ul>
