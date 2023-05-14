@@ -8,8 +8,10 @@ import { Task } from '../interface/task';
   styleUrls: ['./inputs.component.css']
 })
 export class InputsComponent {
+  
 
   constructor(private apiService: ApiService) { }
+  
   addTask() {
 
     const inputTitle = document.getElementById('input-ul') as HTMLInputElement | null;
@@ -43,4 +45,3 @@ export class InputsComponent {
     window.open("https://www.youtube.com/watch?v=jIQ6UV2onyI&t=32s")
   }
 }
-
