@@ -1,6 +1,6 @@
 <div class="input-container">
-  <input id="input-ul" type="text" placeholder="Task title goes here" >
-  <textarea id="desc-ul" type="text" placeholder="Description goes here"></textarea>
+  <input id="input-ul" type="text" placeholder="Task title goes here" [formControl]="controlInputTitle">
+  <textarea id="desc-ul" type="text" placeholder="Description goes here" [formControl]="controlInputDescription"></textarea>
 </div>
 <div class="btn-container">
   <button (click)="addTask()" id="btn-ul">Add Task</button>

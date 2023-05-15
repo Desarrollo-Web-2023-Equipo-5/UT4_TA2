@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 import { ApiService } from '../services/api.service';
 import { Task } from '../interfaces/task.interface';
+import { FormControl, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-inputs',
@@ -9,21 +10,19 @@ import { Task } from '../interfaces/task.interface';
 })
 export class InputsComponent {
 
+  controlInputTitle: FormControl = new FormControl('', { validators: [Validators.required] })
+  controlInputDescription: FormControl = new FormControl('', { validators: [Validators.required] })
+
   constructor(private apiService: ApiService) { }
   
   addTask() {
-    const inputTitle = document.getElementById('input-ul') as HTMLInputElement | null;
-    const taskTitle = inputTitle?.value;
-    const inputDesc = document.getElementById('desc-ul') as HTMLInputElement | null;
-    const taskDesc = inputDesc?.value;
-
-    if (!taskTitle || !taskDesc) {
+    if (this.controlInputTitle.invalid || this.controlInputDescription.invalid) {
       return;
     }
 
     const newTask: Task = {
-      title: taskTitle,
-      description: taskDesc,
+      title: this.controlInputTitle.value,
+      description: this.controlInputDescription.value,
       done: false
     }
     this.apiService.createTask(newTask).then(() => location.reload())
