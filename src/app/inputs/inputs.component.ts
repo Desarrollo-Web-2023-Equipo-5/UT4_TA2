@@ -1,6 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { ApiService } from '../services/api.service';
-import { Task } from '../interface/task';
+import { Task } from '../interfaces/task.interface';
 
 @Component({
   selector: 'app-inputs',
@@ -8,28 +8,26 @@ import { Task } from '../interface/task';
   styleUrls: ['./inputs.component.css']
 })
 export class InputsComponent {
-  
 
   constructor(private apiService: ApiService) { }
   
   addTask() {
-
     const inputTitle = document.getElementById('input-ul') as HTMLInputElement | null;
     const taskTitle = inputTitle?.value;
     const inputDesc = document.getElementById('desc-ul') as HTMLInputElement | null;
     const taskDesc = inputDesc?.value;
+
     if (!taskTitle || !taskDesc) {
-      return
+      return;
     }
+
     const newTask: Task = {
       title: taskTitle,
       description: taskDesc,
       done: false
     }
-    this.apiService.createTask(newTask)
+    this.apiService.createTask(newTask).then(() => location.reload())
   }
-
-
 
   async addCatsk() {
     let catFact: string = await this.apiService.getCatTip()
@@ -38,7 +36,7 @@ export class InputsComponent {
       description: catFact,
       done: false
     }
-    this.apiService.createTask(newTask)
+    this.apiService.createTask(newTask).then(() => location.reload())
   }
 
   routeToVideo() {

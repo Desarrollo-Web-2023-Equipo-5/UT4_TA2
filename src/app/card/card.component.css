@@ -7,6 +7,14 @@
   transition: transform 0.2s;
 }
 
+.done {
+  background-color: orange;
+}
+
+.not-done {
+  background-color: steelblue;
+}
+
 .card:hover {
   cursor: pointer;
   transform: scale(1.05);

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { CardComponent} from "../card/card.component";
-import { Task } from '../interface/task';
+import { Task } from '../interfaces/task.interface';
 
 
 @Injectable({
@@ -16,12 +16,12 @@ export class ApiService {
     return await data.json() ?? [];
   }
 
-  async getTaskById(id:number): Promise<CardComponent | undefined> {
+  async getTaskById(id: number): Promise<Task> {
     const data = await fetch(`${this.url}/${id}`);
-    return await data.json() ?? {};
+    return await data.json() ?? null;
   }
 
-  async createTask(data:Task): Promise<void> {
+  async createTask(data: Task): Promise<void> {
     await fetch(this.url, {
       method: 'POST',
       headers: {
@@ -43,8 +43,17 @@ export class ApiService {
   async getCatTip(): Promise<string> {
     const data = await fetch(this.catTipsUrl);
     const fact = await data.json();
-    return await fact.fact ?? {};
+    return await fact.fact ?? '';
   }
 
-
+  async changeTaskStatus(task: Task) {
+    task.done = !task.done;
+    await fetch(`${this.url}/${task.id}`, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(task)
+    })
+  }
 }
