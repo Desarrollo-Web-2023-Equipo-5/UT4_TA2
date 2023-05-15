@@ -1,4 +1,7 @@
-<div id="${idGen++}" class="card">
+<div (dblclick)="deleteTask()" 
+     (click)="changeTaskStatus()" 
+     class="card"
+     [ngClass]="task.done ? 'done' : 'not-done'">
     <div id="card-title" class="card-title">{{task.title}}</div>
     <div id="card-desc" class="card-desc">{{task.description}}</div>
 </div>

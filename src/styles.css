@@ -21,21 +21,6 @@ h1 {
   width: 100%;
 }
 
-ul {
-  display: flex;
-  width: fit-content;
-  height: fit-content;
-  flex-wrap: wrap;
-  gap: 2em;
-  justify-content: flex-start;
-  list-style-type: none;
-}
-
-li {
-  width: fit-content;
-  height: 14em;
-}
-
 /* Switch */
 .switch {
   display: block;
