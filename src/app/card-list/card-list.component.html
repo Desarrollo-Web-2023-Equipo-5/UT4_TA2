@@ -1,5 +1,15 @@
-<ul>
+<div class="input-container">
+    <input id="input-ul" type="text" placeholder="Task title goes here" [formControl]="controlInputTitle">
+    <textarea id="desc-ul" type="text" placeholder="Description goes here" [formControl]="controlInputDescription"></textarea>
+  </div>
+  <div class="btn-container">
+    <button (click)="addTask()" id="btn-ul">Add Task</button>
+    <button (click)="addCatsk()" id="btn-cat">Add Catsk</button>
+    <button id="loadU" (click)="routeToVideo()">Nyan</button>
+</div>
+
+<ul >
     <li *ngFor="let task of tasks">
-        <app-card [task]="task"></app-card>
+        <app-card (deleteTaskEvent)="removeTask($event)" [task]="task"></app-card>
     </li>
 </ul>

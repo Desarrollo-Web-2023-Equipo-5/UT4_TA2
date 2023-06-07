@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Task } from '../interfaces/task.interface';
 import { ApiService } from '../services/api.service';
 
@@ -9,12 +9,13 @@ import { ApiService } from '../services/api.service';
 })
 export class CardComponent {
   @Input() task!: Task 
+  @Output() deleteTaskEvent = new EventEmitter<Task>()
 
   constructor(private apiService: ApiService) {}
 
   deleteTask(): void {
     if (!this.task.id) { return } 
-    this.apiService.deleteTask(this.task.id).then(() => location.reload())
+    this.deleteTaskEvent.emit(this.task)
   }
 
   changeTaskStatus(): void { 

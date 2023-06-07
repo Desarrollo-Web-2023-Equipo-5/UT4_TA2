@@ -1,10 +1,10 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './navbar/navbar.component';
-import { InputsComponent } from './inputs/inputs.component';
 import { HomePageComponent } from './home-page/home-page.component';
 import { CardListComponent } from './card-list/card-list.component';
 import { CardComponent } from './card/card.component';
@@ -13,14 +13,14 @@ import { CardComponent } from './card/card.component';
   declarations: [
     AppComponent,
     NavbarComponent,
-    InputsComponent,
     HomePageComponent,
     CardListComponent,
     CardComponent
   ],
   imports: [
     BrowserModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

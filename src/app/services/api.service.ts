@@ -1,6 +1,9 @@
 import { Injectable } from '@angular/core';
 import { CardComponent} from "../card/card.component";
 import { Task } from '../interfaces/task.interface';
+import { HttpClient } from '@angular/common/http';
+import { Observable, map } from 'rxjs';
+import { User } from '../interfaces/user.interface';
 
 
 @Injectable({
@@ -8,36 +11,40 @@ import { Task } from '../interfaces/task.interface';
 })
 export class ApiService {
 
-  url = "http://localhost:3000/tasks";
+  url = "http://localhost:3000";
   catTipsUrl = "https://catfact.ninja/fact";
 
-  async getAllTasks(): Promise<Task[]> {
-    const data = await fetch(this.url);
-    return await data.json() ?? [];
+  constructor( private http: HttpClient ) { }
+
+  createUser(data: User): Observable<User> {
+    return this.http.post<User>(`${this.url}/users`, data);
   }
 
-  async getTaskById(id: number): Promise<Task> {
-    const data = await fetch(`${this.url}/${id}`);
-    return await data.json() ?? null;
+  getUserById(id: string): Observable<User> {
+    return this.http.get<User>(`${this.url}/users/${id}`);
   }
 
-  async createTask(data: Task): Promise<void> {
-    await fetch(this.url, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(data)
-    })
+  getAllTasksFromUser(id: string): Observable<Task[]> {
+    return this.http.get<Task[]>(`${this.url}/users/${id}/tasks`)
+      .pipe(
+        map((res: any) => res.tasks)
+      );
   }
 
-  async deleteTask(id:number): Promise<void> {
-    await fetch(`${this.url}/${id}`, {
-      method: 'DELETE',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-    })
+  getTaskById(userId: string, taskId: string): Observable<Task> {
+    return this.http.get<Task>(`${this.url}/users/${userId}/tasks/${taskId}`);
+  }
+
+  updateTask(userId: string, taskId: string, task: Task): Observable<Task> {
+    return this.http.put<Task>(`${this.url}/users/${userId}/tasks/${taskId}`, task);
+  }
+
+  deleteTaskById(userId: string, taskId: string): Observable<Task> {
+    return this.http.delete<Task>(`${this.url}/users/${userId}/tasks/${taskId}`);
+  }
+
+  createTask(userId: string, task: Task): Observable<Task> {
+    return this.http.post<Task>(`${this.url}/users/${userId}/tasks`, task);
   }
 
   async getCatTip(): Promise<string> {
